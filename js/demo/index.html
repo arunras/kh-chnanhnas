@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Multiple Elements Cycle Plugin Demo</title>
+		<meta charset="utf-8" />
+		<link rel="stylesheet" href="styles.css">
+		<script type="text/javascript" src="jquery-1.5.min.js"></script>
+		<script type="text/javascript" src="jquery.multipleelements.cycle.min.js"></script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+				<!-- Example -->
+				$("#exampleDemo").multipleElementsCycle({
+					container: '#exampleElements',
+					prev: '#exampleLeft',
+					next: '#exampleRight'
+				});
+				
+				<!-- Plain Defaults -->
+				$("#plainDemo").multipleElementsCycle();
+				
+				<!-- Vertical Demo -->
+				$("#verticalDemo").multipleElementsCycle({
+					vertical: true,
+					prev: '#verticalPrev',
+					next: '#verticalNext',
+					container: '#cycle-vert',
+				});
+				
+				<!-- Custom One -->
+				$("#fixedStartDemo").multipleElementsCycle({
+					container: '#cycleElementsQuickly',
+					prev: '#cycleElementsQuicklyLeft',
+					next: '#cycleElementsQuicklyRight',
+					speed: 1000,
+					start: 0,
+					showCount: 3
+				});
+				
+				<!-- Jump to a given place by adding data-position="3" to the selector-->
+				$("#jumpToDemo").multipleElementsCycle({
+					container: '#cycleToPointElements',
+					prev: '#cycleToPointPrev',
+					next: '#cycleToPointNext',
+					jumpTo: '.cycleToPoint'
+				});
+				
+				<!-- custom scroll count -->
+				$("#scrollCount").multipleElementsCycle({
+					container: '#cycleScrollCount',
+					prev: '#cycleScrollCountPrev',
+					next: '#cycleScrollCountNext',
+					scrollCount: 4
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<h1>Multiple Elements Cycle Plugin 
+			<span>jQuery Plugin. Version 1.0. Released 20 Feb 2011.<span></h1>
+		
+		<p>Provides a simple preview scrolling panel of items like below. All the elements and selectors are customizable so it can fit into nearly every website. The plugin also includes options to allow vertical scrolling, jump links and various other scrolling options.</p>
+		
+		<div class="cycleElementsContainer" id="exampleDemo">
+			<div class="cycleElementsArrow">
+				<a href="#" id="exampleLeft">Scroll Left</a>
+			</div>
+			<div id="exampleElements">
+				<ul>			
+					<li>#1</li>
+					<li>#2</li>
+					<li>#3</li>
+					<li>#4</li>
+					<li>#5</li>	
+					<li>#6</li>
+					<li>#7</li>	
+					<li>#8</li>
+				</ul>
+			</div>
+			<div class="cycleElementsArrow">
+				<a href="#" id="exampleRight">Scroll Right</a>
+			</div>
+		</div>
+		
+		<p class="contents">Contents: <a href="#Features">Features</a> | <a href="#Installing">Installing</a> | <a href="#Examples">Examples</a> | <a href="#Configuration">Configuration</a> | <a href="#Credit">Credits</a> | <a href="#License">License</a></p>
+			
+		<h2 id="Features">Features</h2>
+		<ul>
+			<li>Allows Multiple Individual Cycles on 1 page.</li>
+			<li>Flexible Setup - Widths and styles are controlled in your css.</li>
+			<li>Customizable Speed Options. <a href="#customised">Example</a></li>
+			<li>Ability to jump to a given item in the list. <a href="#jump-to">Example</a>.</li>
+			<li>Supports horizontal as well as vertical scrollers. <a href="#vertical">Example</a>.</li> 
+			<li>Customize how many elements you want to scroll. <a href="#scroll-count">Example</a>.</li>
+		</ul>
+		
+		<h2 id="Installing">Installing</h2>
+		<h3>Step 1: Include the files in your Project</h3>
+		<p>If you haven't already you can download the script from GitHub. <a href="http://github.com/willrossi/jQuery-Multiple-Elements-Cycle">github.com/willrossi/jQuery-Multiple-Elements-Cycle</a></p>
+		<p>You need to include the <a href="http://www.jquery.com">jQuery</a> library. This plugin comes bundled with jQuery 1.3.2 Minified. You also need to include the <em>jquery.multipleelements.cycle.js</em> or the minified version in your page. </p>
+		<pre><code>&lt;script type="text/javascript" src="jquery-1.5.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="jquery.multipleelements.cycle.js"&gt;&lt;/script&gt;
+		</code></pre>
+		
+		<h3>Step 2: Setup your HTML</h3>
+		<pre><code>&lt;div class="cycleElementsContainer" id="plainDemo"&gt;
+	&lt;a href="#" id="cycleElementsLeft">Scroll Left&lt;/a&gt;
+	&lt;div id="cycleElements"&gt;
+		&lt;ul>			
+			&lt;li&gt;#1&lt;/li&gt;
+			&lt;li&gt;#2&lt;/li&gt;
+			&lt;li&gt;#3&lt;/li&gt;
+			&lt;li&gt;#4&lt;/li&gt;
+			&lt;li&gt;#5&lt;/li&gt;	
+			&lt;li&gt;#6&lt;/li&gt;
+		&lt;/ul&gt;
+	&lt;/div&gt;
+	&lt;a href="#" id="cycleElementsRight"&gt;Scroll Right&lt;/a&gt;
+&lt;/div&gt;
+</code></pre>
+		<h3>Step 3: Configure</h3>
+		<p>Once you have included the JS and the html then you need to define your own CSS styles and initialize the JS effect</p>
+		<pre><code><span class="com">/* CSS */</span>
+.cycleElementsContainer li { width: XXXX; float: left; } 
+<span class="com">/* If Vertical Scroll then define the height rather than the width and remove the float */</span>
+.cycleElementsContainer li { height: XXXX;} 
+</code></pre>
+
+<pre><code><span class="com">/* HTML */</span>
+&lt;script type="text/javascript"&gt;
+	$(document).ready(function() {
+		$("#plainDemo").multipleElementsCycle();
+	});
+&lt;/script&gt;
+</code></pre>
+		
+		<h2 id="Examples">Examples</h2>
+		
+		<h3>Plain Install</h3>
+		<pre><code>$(document).ready(function() {
+	$("#plainDemo").multipleElementsCycle();
+});</code></pre>
+		<div class="cycleElementsContainer" id="plainDemo">
+			<div class="cycleElementsArrow">
+				<a href="#" id="cycle-prev">Scroll Left</a>
+			</div>
+			<div id="cycle">
+				<ul>			
+					<li>#1</li>
+					<li>#2</li>
+					<li>#3</li>
+					<li>#4</li>
+					<li>#5</li>	
+					<li>#6</li>
+					<li>#7</li>
+					<li>#8</li>
+					<li>#9</li>
+				</ul>
+			</div>
+			<div class="cycleElementsArrow">
+				<a href="#" id="cycle-next">Scroll Right</a>
+			</div>
+		</div>
+		
+		<h3 id="vertical">Vertical Scrolling</h3>
+		<pre><code>$(document).ready(function() {
+	$("#verticalDemo").multipleElementsCycle({
+		vertical: true
+	});
+});</code></pre>
+
+
+		<div class="cycleElementsContainer" id="verticalDemo">
+			<div class="cycleElementsArrow">
+				<a href="#" id="verticalPrev">Scroll Up</a>
+			</div>
+			<div id="cycle-vert">
+				<ul>			
+					<li>#1</li>
+					<li>#2</li>
+					<li>#3</li>
+					<li>#4</li>
+					<li>#5</li>	
+					<li>#6</li>
+					<li>#7</li>
+					<li>#8</li>
+					<li>#9</li>
+				</ul>
+			</div>
+			<div class="cycleElementsArrow">
+				<a href="#" id="verticalNext">Scroll Down</a>
+			</div>
+		</div>
+
+
+		<h3 id="customised">Fixed Start (0) and Slower Speed. Limited to 3. Custom IDs for Next / Prev</h3>
+			<pre><code>$(document).ready(function() {
+	$("#fixedStartDemo").multipleElementsCycle({
+		container: '#cycleElementsQuickly',
+		prev: '#cycleElementsQuicklyLeft',
+		next: '#cycleElementsQuicklyRight',
+		speed: 1000,
+		start: 0,
+		showCount: 3
+	});
+});</code></pre>
+		<div class="cycleElementsContainer" id="fixedStartDemo">
+			<div class="cycleElementsArrow">
+				<a href="#" id="cycleElementsQuicklyLeft">Scroll Left</a>
+			</div>
+			<div id="cycleElementsQuickly">
+				<ul>			
+					<li>#1</li>
+					<li>#2</li>
+					<li>#3</li>
+					<li>#4</li>
+					<li>#5</li>	
+					<li>#6</li>
+					<li>#7</li>
+					<li>#8</li>
+					<li>#9</li>
+					<li>#10</li>
+				</ul>
+			</div>
+			<div class="cycleElementsArrow">
+				<a href="#" id="cycleElementsQuicklyRight">Scroll Right</a>
+			</div>
+		</div>
+		
+		
+		<h3 id="jump-to">Jump To: Links</h3>
+		<p>Sometimes you will want custom buttons to jump to the end or start of a cycle. You can specify the selectors in the 'jumpTo' configuration.</p>
+		<p>The plugin will work out the offset from the data-position tag on the selector using <a href="http://api.jquery.com/data/">jQuery data API</a>. The offset can be the following formats - 0 for end of the page, negative values for offset on the right side or positive values for left offset.</p> 
+		<pre><code>$(document).ready(function() {
+	$("#jumpToDemo").multipleElementsCycle({
+		container: '#cycleToPointElements',
+		prev: '#cycleToPointPrev',
+		next: '#cycleToPointNext',
+		jumpTo: '.cycleToPoint'
+	})
+});</code></pre>
+			<div class="cycleElementsContainer" id="jumpToDemo">
+				<div class="cycleElementsArrow">
+					<a href="#" id="cycleToPointPrev">Scroll Left</a>
+				</div>
+				<div id="cycleToPointElements">
+					<ul>			
+						<li>#1</li>
+						<li>#2</li>
+						<li>#3</li>
+						<li>#4</li>
+						<li>#5</li>	
+						<li>#6</li>
+						<li>#7</li>
+						<li>#8</li>
+						<li>#9</li>
+						<li>#10</li>
+					</ul>
+				</div>
+				<div class="cycleElementsArrow">
+
+					<a href="#" id="cycleToPointNext">Scroll Right</a>
+				</div>
+				
+				<div class="demoNavigation">
+					<p class="center">	
+						<a href="#" class="cycleToPoint" data-position="1">Scroll To Beginning</a> | 
+						<a href="#" class="cycleToPoint" data-position="3">Scroll To 3rd Element</a> | 
+						<a href="#" class="cycleToPoint" data-position="-1">Scroll To 2nd to Last</a> | 
+						<a href="#" class="cycleToPoint" data-position="0">Scroll To End</a>
+					</p>
+				</div>
+			</div>
+			
+			<h3 id="scroll-count">Scroll multiple elements at once</h3>
+			<p>To scroll through more than 1 item at a time you can pass <code>scrollCount</code> as an integer
+				and it will scroll that amount rather than 1.</p>
+			<p>If there is not enough items in the list to scroll another time it automatically scrolls the remainder</p>
+			
+			<pre><code>$(document).ready(function() {
+	$("#scrollCount").multipleElementsCycle({
+		container: '#cycleScrollCount',
+		prev: '#cycleScrollCountPrev',
+		next: '#cycleScrollCountNext',
+		scrollCount: 4
+	});
+});</code></pre>
+			<div class="cycleElementsContainer" id="scrollCount">
+				<div class="cycleElementsArrow">
+					<a href="#" id="cycleScrollCountPrev">Scroll Left</a>
+				</div>
+				<div id="cycleScrollCount">
+					<ul>			
+						<li>#1</li>
+						<li>#2</li>
+						<li>#3</li>
+						<li>#4</li>
+						<li>#5</li>	
+						<li>#6</li>
+						<li>#7</li>
+						<li>#8</li>
+						<li>#9</li>
+						<li>#10</li>
+						<li>#11</li>
+						<li>#12</li>
+						<li>#13</li>
+						<li>#14</li>
+					</ul>
+				</div>
+				<div class="cycleElementsArrow">
+					<a href="#" id="cycleScrollCountNext">Scroll Right</a>
+				</div>
+
+
+			</div>
+		<h2 id="Configuration">Configuration</h2>
+		<pre><code>$("#demo").multipleElementsCycle({
+	container: '#cycle',	<span class="com">// Selector for element (ul) container (selector)</span>
+	prev: '#cycle-prev',	<span class="com">// Selector to scroll previous (selector)</span>
+	next: '#cycle-next', 	<span class="com">// Selector to scroll next (selector)</span>
+	speed: 500,		<span class="com">// Speed to scroll elements (int)</span>
+	containerSize: false,	<span class="com">// Override default size (int, px)</span>
+	show: 4,		<span class="com">// Items to show from the list (int)</span>
+	start: false,		<span class="com">// Override the start with a defined value (int)</span>
+	jumpTo: false,		<span class="com">// Selectors to use as jump list (selector)</span>
+	vertical: false,	<span class="com">// Whether Scroll is for vertical (bool)</span>
+	scrollCount: 1,		<span class="com">// How many elements to scroll when clicking next / prev (int)</span>
+	element: "li",		<span class="com">// Element which is cycled. Update this and parent (selector)</span>
+	parent: "ul"		<span class="com">// Parent element which contains the elements (selector)</span>
+});</code></pre>
+		<h2 id="Credit">Credit</h2>
+		<p>Copyright (c) 2011 Will Rossiter (<a href="http://www.willrossi.com">willrossi.com</a>). If you would like to contact me you can do so through my <a href="http://willrossi.com">website</a>. Suggestions, patches or enhancements to the code are more then welcome to be emailed through to me or 
+			submitted through <a href="https://github.com/willrossi/jquery-multiple-elements-cycle">github.com/willrossi/jquery-multiple-elements-cycle</a>.</p> 
+		
+		<h2 id="License">License</h2>
+		<p><pre>Copyright (c) 2011, Will Rossiter
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Will Rossiter nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY WILL ROSSITER ''AS IS'' AND ANY
+EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL WILL ROSSITER BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+		</pre></p>
+	</body>
+</html>

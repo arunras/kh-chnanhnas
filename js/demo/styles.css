@@ -1,0 +1,84 @@
+/**
+ * Copyright (c) 2011 Will Rossiter (willrossi.com)
+ *
+ * @author Will Rossiter <will.rossiter@gmail.com>
+ * @version 1.0
+ */
+
+/* Demo Page Styles - You do not need these to make it work
+ * ------------------------------------------------------------ */
+* { margin: 0; padding: 0; }
+html { background: #efefef; font: 13px/20px Helvetica, Arial, Sans-serif;}
+body { width: 720px; background: #fff; -webkit-box-shadow: 0 0 20px #ccc; -moz-box-shadow: 0 0 20px #ccc; padding: 20px; margin: 20px auto; }
+
+h1 { font-size: 36px; letter-spacing: -1px; margin-bottom: 20px; line-height: 40px;}
+	h1 span { font-size: 12px; letter-spacing: 0; display: block; color: #999; font-weight: lighter; 
+		line-height: 20px; }
+h2 { font-size: 24px; margin-bottom: 27px; border-bottom: 3px solid #f4f4f4; line-height: 40px;}
+h3 { font-size: 18px; margin-bottom: 10px; }
+
+p { margin-bottom: 20px; color: #666;}
+
+.center { text-align: center; }
+
+pre { 
+	font-family: Monaco,"Courier New",monospace; background: #f4f4f4; 
+	padding: 0 10px; font-size: 11px; margin-bottom: 20px; color: #666; 
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; 
+	}
+	
+	pre .com { color: green; }
+	
+a { color: #5397cb; text-decoration: none; background: #f2f9ff; padding: 3px;}
+	a:focus,
+	a:hover { border-bottom: none; color: #3375a7; }
+
+ul { margin-bottom: 40px; }
+	li { margin: 0 0 10px 20px; color: #666; font-size: 13px; }
+	
+	
+.contents { background: #f5f9fc; padding: 19px; color: #999; border: 1px solid #e5eef6; 
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px;  color: #a9c6dc;}
+
+.cycleElementsContainer { padding: 9px; margin: 20px 0; overflow: hidden; border: 1px solid #eee;
+	-moz-border-radius: 2px; -webkit-border-radius: 2px; border-radius: 2px; } 	
+	.cycleElementsContainer div { float: left; }
+	.cycleElementsContainer .demoNavigation { clear: both; padding-top: 10px; float: none;}
+	.cycleElementsContainer .cycleElementsArrow { padding-top: 30px; text-align: center; width: 80px; }
+
+	/* Common List Styles
+ 	* ---------------------- */
+	.cycleElementsContainer li {
+		display: block;
+		width: 100px; /* REQUIRED */
+		height: 80px;
+		float: left; /* REQUIRED */
+		margin: 0 10px;
+		background: url(list_item_bg.gif) no-repeat center center;
+		line-height: 80px;
+		text-align: center;
+		color: #777;
+		border: 2px solid #bfbfbf;
+		font-size: 18px;
+		font-weight: bold;
+	}
+
+/* Vertical Demo Styles
+ * ------------------------- */
+#verticalDemo {}
+	#verticalDemo div {
+		float: none;
+	}
+	#verticalDemo .cycleElementsArrow {
+		width: auto;
+		padding: 10px;
+	}
+	#verticalDemo ul {
+		width: 100px;
+		margin: 0 auto;
+	}
+		#verticalDemo li {
+			float: none;
+			clear: both;
+			margin-bottom: 10px;
+		}
